@@ -1,0 +1,32 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+self["webpackHotUpdate_N_E"]("app/(main)/layout",{
+
+/***/ "(app-pages-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22C%3A%5C%5CUsers%5C%5Ckaush%5C%5COneDrive%5C%5CDesktop%5C%5Cazad%5C%5Cwebazad%5C%5Cnode_modules%5C%5Cnext%5C%5Cdist%5C%5Cclient%5C%5Capp-dir%5C%5Clink.js%22%2C%22ids%22%3A%5B%22__esModule%22%2C%22default%22%5D%7D&modules=%7B%22request%22%3A%22C%3A%5C%5CUsers%5C%5Ckaush%5C%5COneDrive%5C%5CDesktop%5C%5Cazad%5C%5Cwebazad%5C%5Csrc%5C%5Capp%5C%5Cglobals.css%22%2C%22ids%22%3A%5B%5D%7D&server=false!":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22C%3A%5C%5CUsers%5C%5Ckaush%5C%5COneDrive%5C%5CDesktop%5C%5Cazad%5C%5Cwebazad%5C%5Cnode_modules%5C%5Cnext%5C%5Cdist%5C%5Cclient%5C%5Capp-dir%5C%5Clink.js%22%2C%22ids%22%3A%5B%22__esModule%22%2C%22default%22%5D%7D&modules=%7B%22request%22%3A%22C%3A%5C%5CUsers%5C%5Ckaush%5C%5COneDrive%5C%5CDesktop%5C%5Cazad%5C%5Cwebazad%5C%5Csrc%5C%5Capp%5C%5Cglobals.css%22%2C%22ids%22%3A%5B%5D%7D&server=false! ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval(__webpack_require__.ts("Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! ./node_modules/next/dist/client/app-dir/link.js */ \"(app-pages-browser)/./node_modules/next/dist/client/app-dir/link.js\", 23));\n;\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./src/app/globals.css */ \"(app-pages-browser)/./src/app/globals.css\"));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL25vZGVfbW9kdWxlcy9uZXh0L2Rpc3QvYnVpbGQvd2VicGFjay9sb2FkZXJzL25leHQtZmxpZ2h0LWNsaWVudC1lbnRyeS1sb2FkZXIuanM/bW9kdWxlcz0lN0IlMjJyZXF1ZXN0JTIyJTNBJTIyQyUzQSU1QyU1Q1VzZXJzJTVDJTVDa2F1c2glNUMlNUNPbmVEcml2ZSU1QyU1Q0Rlc2t0b3AlNUMlNUNhemFkJTVDJTVDd2ViYXphZCU1QyU1Q25vZGVfbW9kdWxlcyU1QyU1Q25leHQlNUMlNUNkaXN0JTVDJTVDY2xpZW50JTVDJTVDYXBwLWRpciU1QyU1Q2xpbmsuanMlMjIlMkMlMjJpZHMlMjIlM0ElNUIlMjJfX2VzTW9kdWxlJTIyJTJDJTIyZGVmYXVsdCUyMiU1RCU3RCZtb2R1bGVzPSU3QiUyMnJlcXVlc3QlMjIlM0ElMjJDJTNBJTVDJTVDVXNlcnMlNUMlNUNrYXVzaCU1QyU1Q09uZURyaXZlJTVDJTVDRGVza3RvcCU1QyU1Q2F6YWQlNUMlNUN3ZWJhemFkJTVDJTVDc3JjJTVDJTVDYXBwJTVDJTVDZ2xvYmFscy5jc3MlMjIlMkMlMjJpZHMlMjIlM0ElNUIlNUQlN0Qmc2VydmVyPWZhbHNlISIsIm1hcHBpbmdzIjoiQUFBQSw4TkFBcUw7QUFDckw7QUFDQSxvS0FBOEciLCJzb3VyY2VzIjpbIiJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiwgd2VicGFja0V4cG9ydHM6IFtcIl9fZXNNb2R1bGVcIixcImRlZmF1bHRcIl0gKi8gXCJDOlxcXFxVc2Vyc1xcXFxrYXVzaFxcXFxPbmVEcml2ZVxcXFxEZXNrdG9wXFxcXGF6YWRcXFxcd2ViYXphZFxcXFxub2RlX21vZHVsZXNcXFxcbmV4dFxcXFxkaXN0XFxcXGNsaWVudFxcXFxhcHAtZGlyXFxcXGxpbmsuanNcIik7XG47XG5pbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiAqLyBcIkM6XFxcXFVzZXJzXFxcXGthdXNoXFxcXE9uZURyaXZlXFxcXERlc2t0b3BcXFxcYXphZFxcXFx3ZWJhemFkXFxcXHNyY1xcXFxhcHBcXFxcZ2xvYmFscy5jc3NcIik7XG4iXSwibmFtZXMiOltdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(app-pages-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22C%3A%5C%5CUsers%5C%5Ckaush%5C%5COneDrive%5C%5CDesktop%5C%5Cazad%5C%5Cwebazad%5C%5Cnode_modules%5C%5Cnext%5C%5Cdist%5C%5Cclient%5C%5Capp-dir%5C%5Clink.js%22%2C%22ids%22%3A%5B%22__esModule%22%2C%22default%22%5D%7D&modules=%7B%22request%22%3A%22C%3A%5C%5CUsers%5C%5Ckaush%5C%5COneDrive%5C%5CDesktop%5C%5Cazad%5C%5Cwebazad%5C%5Csrc%5C%5Capp%5C%5Cglobals.css%22%2C%22ids%22%3A%5B%5D%7D&server=false!\n"));
+
+/***/ }),
+
+/***/ "(app-pages-browser)/./src/app/globals.css":
+/*!*****************************!*\
+  !*** ./src/app/globals.css ***!
+  \*****************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval(__webpack_require__.ts("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (\"ed74a32986db\");\nif (true) { module.hot.accept() }\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL3NyYy9hcHAvZ2xvYmFscy5jc3MiLCJtYXBwaW5ncyI6Ijs7OztBQUFBLGlFQUFlLGNBQWM7QUFDN0IsSUFBSSxJQUFVLElBQUksaUJBQWlCIiwic291cmNlcyI6WyJDOlxcVXNlcnNcXGthdXNoXFxPbmVEcml2ZVxcRGVza3RvcFxcYXphZFxcd2ViYXphZFxcc3JjXFxhcHBcXGdsb2JhbHMuY3NzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IFwiZWQ3NGEzMjk4NmRiXCJcbmlmIChtb2R1bGUuaG90KSB7IG1vZHVsZS5ob3QuYWNjZXB0KCkgfVxuIl0sIm5hbWVzIjpbXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(app-pages-browser)/./src/app/globals.css\n"));
+
+/***/ })
+
+});

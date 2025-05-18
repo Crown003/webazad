@@ -7,7 +7,7 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-              Timeless Furniture for Modern Living
+              Furniture That Defines Your Style
             </h1>
             <p className="text-lg text-gray-600 max-w-lg">
               Transform your space with our handcrafted furniture pieces. Designed with passion, made to last generations.
