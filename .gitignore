@@ -1,1 +1,43 @@
+# Dependencies
 node_modules
+
+# Build output
+.next
+out
+
+# Production build
+build
+
+# Cache
+.turbo
+.cache
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Editor and IDE related
+.vscode/
+.idea
+*.swp
+*.swo
+*.asv
+.DS_Store
+
+# Next.js specific files (can sometimes be useful to ignore)
+# yarn.lock # If you prefer npm
+# package-lock.json # If you prefer yarn
+
+# Optional: Temporary files or directories
+temp/
+tmp/
