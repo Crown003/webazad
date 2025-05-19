@@ -1,4 +1,5 @@
 "use client"
+import { useRef } from 'react';
 import { Contact, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
