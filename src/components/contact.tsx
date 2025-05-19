@@ -1,7 +1,35 @@
+"use client"
 import { Contact, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
 const ContactSection = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx4HNyJRCesqF_ejMLKTt2JfR0bcP2fQj0Zua9MDCSYv-m8gN3doubeDa73K091B9Uh/exec';
+
+    if (!formRef.current) return;
+
+    try {
+      const formData = new FormData(formRef.current);
+
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert('Thanks for Contacting us..! We Will Contact You Soon...');
+        formRef.current.reset();
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error: any) {
+      console.error('Error!', error.message);
+    }
+  };
   return (
     <section id="contact" className="scroll-my-20 bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,12 +44,21 @@ const ContactSection = () => {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="bg-gray-50 p-8 rounded-lg">
             <h3 className="text-xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
-            <form className="space-y-4">
+            <form ref={formRef} name="contact" onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                 <input
                   type="text"
                   id="name"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="phone-number" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone-number"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
                 />
               </div>
