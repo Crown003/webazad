@@ -8,7 +8,7 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbx4HNyJRCesqF_ejMLKTt2JfR0bcP2fQj0Zua9MDCSYv-m8gN3doubeDa73K091B9Uh/exec';
+    const scriptURL = process.env.GOOGLE_SHEET_LINK
 
     if (!formRef.current) return;
 
