@@ -16,7 +16,7 @@ const ContactSection = () => {
     try {
       const formData = new FormData(formRef.current);
 
-      const response = await fetch(scriptURL, {
+      const response = await fetch(scriptURL: any, {
         method: 'POST',
         body: formData,
       });
