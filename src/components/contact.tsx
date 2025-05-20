@@ -1,19 +1,33 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
 
 const ContactSection = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
 
+    // Get the URL directly from the public runtime config
+    // This will be injected by Vercel during build time
     const scriptURL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
 
     if (!scriptURL) {
+      setSubmitStatus({
+        type: "error",
+        message: "Configuration error. Please contact the administrator.",
+      });
       console.error("Google Script URL is not defined in the environment variables.");
+      setIsSubmitting(false);
       return;
     }
 
@@ -28,13 +42,22 @@ const ContactSection = () => {
       });
 
       if (response.ok) {
-        alert("Thanks for contacting us! We will get back to you soon.");
+        setSubmitStatus({
+          type: "success",
+          message: "Thanks for contacting us! We will get back to you soon.",
+        });
         formRef.current.reset();
       } else {
         throw new Error("Failed to submit form");
       }
     } catch (error: any) {
+      setSubmitStatus({
+        type: "error",
+        message: "Something went wrong. Please try again later.",
+      });
       console.error("Error!", error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -52,6 +75,15 @@ const ContactSection = () => {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="bg-gray-50 p-8 rounded-lg">
             <h3 className="text-xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
+            {submitStatus.type && (
+              <div
+                className={`p-4 mb-4 rounded-md ${
+                  submitStatus.type === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
             <form ref={formRef} name="contact" onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -107,9 +139,10 @@ const ContactSection = () => {
 
               <button
                 type="submit"
-                className="w-full bg-amber-700 text-white py-2 rounded-md font-medium hover:bg-amber-800 transition duration-300"
+                disabled={isSubmitting}
+                className="w-full bg-amber-700 text-white py-2 rounded-md font-medium hover:bg-amber-800 transition duration-300 disabled:bg-amber-400 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
