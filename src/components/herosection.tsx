@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -13,13 +14,15 @@ const HeroSection = () => {
               Transform your space with our handcrafted furniture pieces. Designed with passion, made to last generations.
             </p>
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+              <Link href="#products">
               <button className="bg-amber-700 text-white px-6 py-3 rounded-md font-medium hover:bg-amber-800 transition duration-300 flex items-center justify-center">
                 Explore Collection
                 <ChevronRight size={20} className="ml-2" />
               </button>
-              <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition duration-300">
+              </Link>
+              {/* <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition duration-300">
                 Learn More
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="relative h-64 md:h-96 rounded-lg overflow-hidden">

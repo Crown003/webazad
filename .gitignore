@@ -34,6 +34,8 @@ lerna-debug.log*
 *.asv
 .DS_Store
 
+.env
+
 # Next.js specific files (can sometimes be useful to ignore)
 # yarn.lock # If you prefer npm
 # package-lock.json # If you prefer yarn

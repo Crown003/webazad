@@ -1,63 +1,34 @@
 "use client";
-
-import { useRef, useState } from "react";
-import { Mail, Phone } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, X } from "lucide-react"; 
 import Link from "next/link";
+import { contactUs } from "@/actions/contact";
 
 const ContactSection = () => {
-  const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => { 
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: "" });
+    const formData = new FormData(e.currentTarget); 
+    const res = await contactUs(formData);
 
-    // Get the URL directly from the public runtime config
-    // This will be injected by Vercel during build time
-    const scriptURL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-
-    if (!scriptURL) {
+    if (res?.successmessage) {
       setSubmitStatus({
-        type: "error",
-        message: "Configuration error. Please contact the administrator.",
+        type: "success",
+        message: res.successmessage, 
       });
-      console.error("Google Script URL is not defined in the environment variables.");
+      e.currentTarget.reset(); 
       setIsSubmitting(false);
-      return;
-    }
-
-    if (!formRef.current) return;
-
-    try {
-      const formData = new FormData(formRef.current);
-
-      const response = await fetch(scriptURL, {
-        method: "POST",
-        body: formData,
-        mode: "no-cors"
-      });
-
-      if (response.ok) {
-        setSubmitStatus({
-          type: "success",
-          message: "Thanks for contacting us! We will get back to you soon.",
-        });
-        formRef.current.reset();
-      } else {
-        throw new Error("Failed to submit form");
-      }
-    } catch (error: any) {
+    } else {
       setSubmitStatus({
         type: "error",
-        message: "Something went wrong. Please try again later.",
+        message: res?.errormessage || "An unknown error occurred.", 
       });
-      console.error("Error!", error.message);
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -78,14 +49,21 @@ const ContactSection = () => {
             <h3 className="text-xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
             {submitStatus.type && (
               <div
-                className={`p-4 mb-4 rounded-md ${
+                className={`p-4 mb-4 rounded-md relative ${
                   submitStatus.type === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
                 }`}
               >
                 {submitStatus.message}
+                <button
+                  onClick={() => setSubmitStatus({ type: null, message: "" })} 
+                  className="absolute top-3 right-2 text-gray-500 hover:text-gray-700"
+                  aria-label="Close message"
+                >
+                  <X size={18} />
+                </button>
               </div>
             )}
-            <form ref={formRef} name="contact" onSubmit={handleSubmit} className="space-y-4">
+            <form name="contact" onSubmit={handleSubmit} className="text-black space-y-4"> 
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Full Name
@@ -176,12 +154,8 @@ const ContactSection = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Business Hours</h3>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Monday-Saturday</span>
+                  <span className="text-gray-600">All Week Days (MON-SUN)</span>
                   <span className="font-medium text-gray-900">10:00 AM - 9:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Sunday</span>
-                  <span className="font-medium text-gray-900">Closed</span>
                 </div>
               </div>
             </div>
