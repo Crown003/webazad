@@ -11,27 +11,36 @@ const ContactSection = () => {
     message: string;
   }>({ type: null, message: "" });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => { 
-    e.preventDefault();
-    setIsSubmitting(true);
-    const formData = new FormData(e.currentTarget); 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    const formData = new FormData(e.currentTarget);
     const res = await contactUs(formData);
 
     if (res?.successmessage) {
       setSubmitStatus({
         type: "success",
-        message: res.successmessage, 
+        message: res.successmessage,
       });
-      e.currentTarget.reset(); 
-      setIsSubmitting(false);
+      e.currentTarget.reset(); // Reset the form fields
     } else {
       setSubmitStatus({
         type: "error",
-        message: res?.errormessage || "An unknown error occurred.", 
+        message: res?.errormessage || "An unknown error occurred.",
       });
-      setIsSubmitting(false);
+      e.currentTarget.reset(); // Reset the form fields
     }
-  };
+  } catch (error) {
+    setSubmitStatus({
+      type: "error",
+      message: "An unexpected error occurred.",
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <section id="contact" className="scroll-my-20 bg-white py-16 md:py-24">
