@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import { Mail, Phone, X } from "lucide-react"; 
+import { Mail, Phone, X } from "lucide-react";
 import Link from "next/link";
-import { contactUs } from "@/actions/contact";
+import contactUs from "@/actions/contact";
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -11,36 +11,63 @@ const ContactSection = () => {
     message: string;
   }>({ type: null, message: "" });
 
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  // 2. Generic handler for input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" }); 
 
-  try {
-    const formData = new FormData(e.currentTarget);
-    const res = await contactUs(formData);
+    try {
+      const actionFormData = new FormData();
+      actionFormData.append("name", formData.name);
+      actionFormData.append("phone", formData.phone);
+      actionFormData.append("email", formData.email);
+      actionFormData.append("message", formData.message);
 
-    if (res?.successmessage) {
-      setSubmitStatus({
-        type: "success",
-        message: res.successmessage,
-      });
-      e.currentTarget.reset(); // Reset the form fields
-    } else {
+      const res = await contactUs(actionFormData); 
+
+      if (res?.successmessage) {
+        setSubmitStatus({
+          type: "success",
+          message: res.successmessage,
+        });
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: res?.errormessage || "Something went wrong, please try after sometime.",
+        });
+      }
+    } catch (error) {
+      console.error("Client-side caught an unexpected error during submission:", error);
       setSubmitStatus({
         type: "error",
-        message: res?.errormessage || "An unknown error occurred.",
+        message: "Something went wrong, please try after sometime.",
       });
-      e.currentTarget.reset(); // Reset the form fields
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) {
-    setSubmitStatus({
-      type: "error",
-      message: "An unexpected error occurred.",
-    });
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
   return (
     <section id="contact" className="scroll-my-20 bg-white py-16 md:py-24">
@@ -64,7 +91,7 @@ const ContactSection = () => {
               >
                 {submitStatus.message}
                 <button
-                  onClick={() => setSubmitStatus({ type: null, message: "" })} 
+                  onClick={() => setSubmitStatus({ type: null, message: "" })}
                   className="absolute top-3 right-2 text-gray-500 hover:text-gray-700"
                   aria-label="Close message"
                 >
@@ -72,7 +99,7 @@ const ContactSection = () => {
                 </button>
               </div>
             )}
-            <form name="contact" onSubmit={handleSubmit} className="text-black space-y-4"> 
+            <form name="contact" onSubmit={handleSubmit} className="text-black space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Full Name
@@ -82,6 +109,8 @@ const ContactSection = () => {
                   id="name"
                   name="name"
                   required
+                  value={formData.name} // Bind value to state
+                  onChange={handleChange} // Update state on change
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
                 />
               </div>
@@ -95,6 +124,8 @@ const ContactSection = () => {
                   id="phone-number"
                   name="phone"
                   required
+                  value={formData.phone} // Bind value to state
+                  onChange={handleChange} // Update state on change
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
                 />
               </div>
@@ -108,6 +139,8 @@ const ContactSection = () => {
                   id="email"
                   name="email"
                   required
+                  value={formData.email} // Bind value to state
+                  onChange={handleChange} // Update state on change
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
                 />
               </div>
@@ -121,6 +154,8 @@ const ContactSection = () => {
                   name="message"
                   rows={4}
                   required
+                  value={formData.message} // Bind value to state
+                  onChange={handleChange} // Update state on change
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
                 ></textarea>
               </div>

@@ -1,8 +1,7 @@
 "use server"
 const scriptURL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL ;
 
-export const contactUs = async (formData: any) => {
-        
+const contactUs = async (formData: any) => {
         const name = formData.get('name')
         const phone = formData.get('phone')
         const email = formData.get('email')
@@ -29,8 +28,9 @@ export const contactUs = async (formData: any) => {
                 }
                 return {successmessage: "thankyou for contacting us we will reach you shortly."}
             }catch(error){
-                console.log(error)
                 return {errormessage:"Oops something wents wrong."}
             }
         }
 }
+
+export default contactUs;
