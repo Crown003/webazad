@@ -5,7 +5,7 @@ import Footer from "@/components/footer";
 
 
 export const metadata: Metadata = {
-  title: "HomeGallery.com",
+  title: "HomeGallery",
   description: "Exquisite, handcrafted furniture built on over 25 years of expertise and a commitment to sustainable materials. Elevate your home with timeless design and enduring quality.",
 };
 
