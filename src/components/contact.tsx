@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Mail, Phone, X } from "lucide-react";
+import { Mail, Phone, X ,MapPin} from "lucide-react";
 import Link from "next/link";
 import contactUs from "@/actions/contact";
 
@@ -188,6 +188,17 @@ const ContactSection = () => {
                     <h4 className="font-medium text-gray-900">Email</h4>
                     <p className="text-gray-600">
                       <Link href="mailto:homegallery555@gmail.com">homegallery555@gmail.com</Link>
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <MapPin className="text-amber-700 mr-4 mt-1" />
+                  <div>
+                    <h4 className="font-medium text-gray-900">Address</h4>
+                    <p className="text-gray-600">
+                      {/* <Link href="mailto:homegallery555@gmail.com">homegallery555@gmail.com</Link> */}
+                      Arjunganj (near chauhan market)
+                      Lucknow,Uttar Pradesh 226002
                     </p>
                   </div>
                 </div>
